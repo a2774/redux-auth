@@ -135,7 +135,7 @@ const handleSubmit = async (e) => {
 
               <div className="mt-6 text-center">
                 <p className="text-slate-400">
-                  Don't have an account? <Link to="/signup" className="text-purple-400 hover:text-pink-400 font-semibold transition-colors">Sign up here</Link>
+                  Don't have an account? <Link to="/singup" className="text-purple-400 hover:text-pink-400 font-semibold transition-colors">Sign up here</Link>
                 </p>
               </div>
 
