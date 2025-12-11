@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { GetUser } from "../feature/user/userSlice.js";
+import { getUser } from "../../feature/user/userSlice.js";
 
 function UserDetails() {
   const dispatch = useDispatch();
@@ -9,11 +9,11 @@ function UserDetails() {
   const itemsPerPage = 6;
 
   useEffect(() => {
-    GetUserAll();
+    getUserAll();
   }, []);
 
-  const GetUserAll = useCallback(async () => {
-    const data = await dispatch(GetUser());
+  const getUserAll = useCallback(async () => {
+    const data = await dispatch(getUser());
     setUserData(data?.payload?.users || []);
   }, [dispatch]);
 

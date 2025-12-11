@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const GetUser = createAsyncThunk("user/getUser", async () => {
+export const getUser = createAsyncThunk("user/getUser", async () => {
   const response = await fetch("https://dummyjson.com/users");
   const data = await response.json();
   return data;
 });
 
-export const AddUser = createAsyncThunk(
+export const addUser = createAsyncThunk(
   "user/addUser",
   async (userData, { rejectWithValue }) => {
     try {
@@ -28,12 +28,6 @@ export const AddUser = createAsyncThunk(
     }
   }
 );
-
-export const GetProduct = createAsyncThunk("user/getProduct", async () => {
-  const response = await fetch("https://dummyjson.com/products");
-  const data = await response.json();
-  return data;
-});
 
 export const loginUser = createAsyncThunk(
   "user/loginUser",
@@ -129,38 +123,24 @@ const userSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(GetUser.pending, (state) => {
+      .addCase(getUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(GetUser.fulfilled, (state, action) => {
+      .addCase(getUser.fulfilled, (state, action) => {
         state.users = action.payload.users;
         state.status = "success";
         state.loading = false;
       })
-      .addCase(GetUser.rejected, (state, action) => {
+      .addCase(getUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
         state.loading = false;
       })
 
-      .addCase(GetProduct.pending, (state) => {
+      .addCase(addUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(GetProduct.fulfilled, (state, action) => {
-        state.products = action.payload.products;
-        state.status = "success";
-        state.loading = false;
-      })
-      .addCase(GetProduct.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-        state.loading = false;
-      })
-
-      .addCase(AddUser.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(AddUser.fulfilled, (state, action) => {
+      .addCase(addUser.fulfilled, (state, action) => {
         const { user, tokens } = action.payload;
 
         state.loading = false;
@@ -174,7 +154,7 @@ const userSlice = createSlice({
         localStorage.setItem("accessToken", tokens?.accessToken);
         localStorage.setItem("refreshToken", tokens?.refreshToken);
       })
-      .addCase(AddUser.rejected, (state, action) => {
+      .addCase(addUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
         state.loading = false;

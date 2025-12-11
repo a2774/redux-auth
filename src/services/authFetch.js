@@ -1,5 +1,5 @@
-import {store} from "../../app/store";
-import { logout, setTokens } from "./userSlice";
+import {store} from "../app/store";
+import { logout, setTokens } from "../feature/user/userSlice";
 
 const API_BASE = "http://localhost:5000";
 

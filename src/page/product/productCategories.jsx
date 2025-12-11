@@ -1,6 +1,6 @@
 import React, { use, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { GetProduct } from "../feature/user/userSlice";
+import { GetProduct } from "../../feature/product/productSlice";
 
 function SectionProducts() {
   const dispatch = useDispatch();

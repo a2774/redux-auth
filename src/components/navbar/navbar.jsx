@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../feature/user/userSlice";
+import { logoutUser } from "../../feature/user/userSlice";
+import Logo from "../../assets/image/Anilvind.jpeg";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,6 @@ function Navbar() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   const handleLogout = () => {
-    
     dispatch(logoutUser());
   };
 
@@ -18,13 +18,16 @@ function Navbar() {
     <nav className="bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 border-b border-purple-500/30 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">R</span>
+            <div className="w-11 h-11 rounded-xl overflow-hidden border-2 border-pink-500 shadow-lg">
+              <img
+                src={Logo}
+                alt="Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-white font-bold text-2xl hidden sm:inline">
-              Redux Auth
+              Redux Auth By Anil Kumar Vind
             </span>
           </div>
 
@@ -56,7 +59,6 @@ function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-
             {!isAuthenticated && (
               <>
                 <Link
@@ -106,7 +108,6 @@ function Navbar() {
 
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-2 border-t border-purple-500/30 pt-4">
-
             <Link
               to="/"
               className="block px-4 py-2 text-slate-300 hover:text-white hover:bg-purple-600/30 rounded-lg transition-all duration-200"

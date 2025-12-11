@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { authFetch } from "../feature/user/authFetch";
+import { authFetch } from "../../services/authFetch";
 
 function Profile() {
   const [data, setData] = useState(null);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { AddUser } from '../feature/user/userSlice.js'
+import { addUser } from '../../feature/user/userSlice.js'
 
 function Singup() {
   const dispatch = useDispatch()
@@ -54,7 +54,7 @@ function Singup() {
     }
 
     try {
-      const result = await dispatch(AddUser(formData))
+      const result = await dispatch(addUser(formData))
 
       if (result.payload) {
         navigate('/')

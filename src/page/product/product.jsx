@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { GetProduct } from "../feature/product/productSlice";
+import { GetProduct } from "../../feature/product/productSlice";
 
 function Product() {
   const dispatch = useDispatch();
@@ -8,13 +8,13 @@ function Product() {
   const [page, setPage] = useState(1);
   const itemsPerPage = 8;
 
-  const GetAllProduct = useCallback(async () => {
+  const getAllProduct = useCallback(async () => {
     const data = await dispatch(GetProduct());
     setProducts(data?.payload?.products || []);
   }, [dispatch]);
 
   useEffect(() => {
-    GetAllProduct();
+    getAllProduct();
   }, []);
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
